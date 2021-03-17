@@ -1,6 +1,6 @@
-##This template contains jdi-light-mobile Android tests
+This template contains jdi-light-mobile Android tests
 
-###How to launch android tests
+How to launch android tests
 
 1) Stable requirements:
 Java 8, Maven 3.6.3, TestNG 6.14.3, Appium 1.18.3, Android 10 <br>
