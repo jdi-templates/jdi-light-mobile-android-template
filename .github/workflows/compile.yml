@@ -1,0 +1,39 @@
+name: JDI iOs Example
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  page_build:
+  release:
+    types: # This configuration does not affect the page_build event above
+      - created
+
+jobs:
+  build:
+    name: Test compile
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [8] # all [8, 9, 10, 11, 12, 13, 14]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+          java-package: jdk
+
+      - name: Welcome to JDI
+        run: |
+          echo ----------------- WELCOME TO JDI Android Example -----------------------
+          mvn --version
+
+      - name: Compile code
+        id: code-compile
+        run: mvn -ntp install -DskipTests
