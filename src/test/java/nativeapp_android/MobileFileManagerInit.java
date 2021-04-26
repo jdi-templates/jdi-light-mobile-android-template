@@ -1,19 +1,18 @@
 package nativeapp_android;
 
+import com.epam.jdi.light.actions.ActionHelper;
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.mobile.elements.common.AppManager;
 import nativeapp.android.AndroidFileManager;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 
+import static com.epam.jdi.light.actions.ActionHelper.BEFORE_JDI_ACTION;
 import static com.epam.jdi.light.mobile.elements.init.PageFactory.initMobile;
 import static com.epam.jdi.light.settings.WebSettings.logger;
 import static nativeapp.android.AndroidFileManager.deleteButton;
@@ -32,6 +31,18 @@ public class MobileFileManagerInit {
     protected static final String PATH_TO_FILE_ANDROID = PATH_TO_ANDROID_FOLDER + FILE_NAME_TEST;
     protected static final String FILE_PULL_PATH_LOCAL = "src/main/resources/";
     protected static final String PATH_TO_FILE_LOCAL = FILE_PULL_PATH_LOCAL + FILE_NAME_TEST;
+
+    @BeforeSuite
+    public void changeBefore() {
+        BEFORE_JDI_ACTION = jInfo -> {
+            try {
+                ActionHelper.beforeJdiAction(jInfo);
+            }
+            catch (Exception ignore) {
+                logger.error("Exception in JDI!!!!", ignore);
+            }
+        };
+    }
 
 
     @BeforeClass(alwaysRun = true)
