@@ -72,5 +72,5 @@ Ready!
 1. Open the tests project in IDEA. (Optional)
 1. Run the following maven command
 ```
-mvn test -Dreport.portal.user=<user_name> -Dreport.portal.password=<user_password> -Dmobile.device.udid=<your_emulator_id> -Dmobile.cloud.type='EPAM' -Dmobile.platform.name=<Android_or_iOS> -Dmobile.platform.version=<platform_version> -Dmobile.device.name=<your_device_name> -Dmobile.device.orientation=portrait -Drp.uuid=<rp_uuid> -Drp.project=jdi -Drp.enable=false -Drp.attributes=env:dev-gcp;type:mobile -f pom.xml
+mvn test -f pom.xml
 ```
