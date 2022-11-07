@@ -3,7 +3,7 @@ package nativeapp_android;
 import com.epam.jdi.light.actions.ActionHelper;
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.mobile.elements.common.AppManager;
-import com.epam.jdi.tools.Timer;
+import com.jdiai.tools.Timer;
 import nativeapp.android.apidemos.ApiDemosApp;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
