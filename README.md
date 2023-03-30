@@ -66,11 +66,27 @@ Ready!
 ![Device UID and name](./docs/android_name_uid.png "Device UID and name")
 
 
-### Run jdi-mobile-report-portal-demo tests
+### Run Android native app tests tests
 1. Launch the created virtual device
 1. Run 'appium' in console
 1. Open the tests project in IDEA. (Optional)
 1. Run the following maven command
 ```
-mvn test -Dreport.portal.user=<user_name> -Dreport.portal.password=<user_password> -Dmobile.device.udid=<your_emulator_id> -Dmobile.cloud.type='EPAM' -Dmobile.platform.name=<Android_or_iOS> -Dmobile.platform.version=<platform_version> -Dmobile.device.name=<your_device_name> -Dmobile.device.orientation=portrait -Drp.uuid=<rp_uuid> -Drp.project=jdi -Drp.enable=false -Drp.attributes=env:dev-gcp;type:mobile -f pom.xml
+mvn clean test
 ```
+After test run finished run
+```
+mvn allure:serve
+```
+
+### Helpfull notes
+1. on MacOS Appium 2 needs to be run in following regime
+```
+appium --base-path=/wd/hub  
+```
+2. pay attention to a terminal where appium is running - there you can see logs and what is going on
+1. see the **src/test/resources/android.properties** to put some properties (might be different according to your environment)
+   1. app= - **Absolute** path to your application under test. (example to run simple tests is here: **src/main/resources/ApiDemos-debug.apk** )
+   2. automationName= - name of a testing framework you using(eg. UiAutomator2, Espresso. Appium 2 runs with UiAutomator2)
+1. It is necessary to check if this environment variables a set: JAVA_HOME , ANDROID_HOME, ANDROID_SDK_ROOT, ANDROID_TOOLS (as it is written above)
+2. when you see comment above marked (for Windows) - for other environments you need to do the same but some other way.
