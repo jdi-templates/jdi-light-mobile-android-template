@@ -1,3 +1,5 @@
+#### JDI Mobile documentation
+See here: https://jdi-docs.github.io/jdi-mobile/
 # JDI Mobile Example
 
 ## How to launch web tests on Android emulator  
